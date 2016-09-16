@@ -1,0 +1,27 @@
+This application is a web-service that receives http get url like http://host:8080/hello/contacts?nameFilter=<filter>
+and sends contacts which names don`t match to filter in JSON format.
+
+In order to use the application with your db, please add appropriate jdbc driver (via pom.xml or add to library),
+ and change configuration.properties file.
+
+In order to test the application with Vagrant environment please follow next steps:
+1. install Vagrant on your machine.
+2. download vagrant box file and Vagrantfile(configuration file) from link: https://drive.google.com/open?id=0B_qadqIssrPQbDFWUTFROGpPMEU
+3. add box to vagrant with command line: vagrant box add contacts file:<path to downloaded box file>
+4. use downloaded Vagrantfile as configuration:
+   1) On Windows environment place it to C:\Users\<User>
+   2) Or you can enter from comand line: vagrant init
+	  This will create a file called Vagrantfile. In this file please uncomment and modify line: config.vm.network "forwarded_port", guest: 8080, host: 8080
+
+5. launch vagrant with command line: vagrant up.
+6. in order to connect to vagrant VM:
+   1. If you use Windows, you must use git bash, or Cygwin. Please install what you prefer.
+      (It is presumed you would install git bash). From git bash command line enter:
+      ssh -i C:/Users/<your user name>/.vagrant/machines/default/virtualbox/private_key vagrant@127.0.0.1 -p 2222
+   2. If you use Linux, enter from command line: vagrant ssh.
+7. from git bash comand line enter: ./startApp.sh
+
+    That`s all. The application is started and uses Postgres database.
+    You can perform Http requests from your local browser.
+    For example from Google Chrome insert url: http://localhost:8080/hello/contacts?nameFilter=^.*[aei].*$
+    This action will obtain all contacts in JSON format, that do not match to '^.*[aei].*$' regular expression.
