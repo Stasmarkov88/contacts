@@ -25,5 +25,5 @@ In order to test the application with Vagrant environment please follow next ste
     You can perform Http requests from your local browser.
     For example from Google Chrome insert url: http://localhost:8080/hello/contacts?nameFilter=^.*[aei].*$
     This action will obtain all contacts in JSON format, that do not match to '^.*[aei].*$' regular expression.
-    
+
 Build status: [![Build Status](https://travis-ci.org/Stasmarkov88/contacts.svg?branch=feature%2Fservices-and-controller)](https://travis-ci.org/Stasmarkov88/contacts)
